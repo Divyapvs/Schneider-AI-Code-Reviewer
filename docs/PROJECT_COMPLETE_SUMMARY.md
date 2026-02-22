@@ -6,7 +6,7 @@
 **Team:** Aimlumous 
 **Hackathon:** Schneider Electric Innovation Challenge 2026  
 **Submission Date:** February 19, 2026  
-**Repository:** https://github.com/[ShriHarsan64K]/Schneider-AI-Code-Reviewer
+**Repository:** https://github.com/ShriHarsan64K/Schneider-AI-Code-Reviewer
 
 ---
 
@@ -1044,7 +1044,7 @@ code .
 
 ## 📞 CONTACT & LINKS
 
-**GitHub Repository:** https://github.com/[ShriHarsan64K]/Schneider-AI-Code-Reviewer  
+**GitHub Repository:** https://github.com/ShriHarsan64K/Schneider-AI-Code-Reviewer  
 **Live Demo Video:** https://youtu.be/mdNkXvRxc5M
 **Presentation Slides:** https://docs.google.com/presentation/d/1ZBNUyfw60QGt9NOMNfa0va0LDVll_FFv/edit?usp=drive_link&ouid=100423120915304294650&rtpof=true&sd=true
 

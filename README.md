@@ -560,5 +560,5 @@ If this tool has helped you, please:
 
 ---
 
-*Made with ❤️ by the Schneider Electric AI Code Reviewer Team*  
+*Made with ❤️ by the Aimlumous Team*  
 *Schneider Electric Innovation Hackathon 2026*

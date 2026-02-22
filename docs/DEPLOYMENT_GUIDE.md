@@ -439,3 +439,205 @@ If issues persist:
 4. Ensure `.env` file has valid API keys
 
 Good luck with the hackathon! 🚀
+
+---
+
+## 🐙 GIT PUSH COMMANDS — Complete Reference
+
+Use these any time you update a file. Always run from `D:\Schneider_Hackathon`.
+
+---
+
+### ⚡ Push Everything at Once (Most Common)
+```bash
+cd D:\Schneider_Hackathon
+git add .
+git status          # double-check .env is NOT listed
+git commit -m "Describe what you changed"
+git push origin main
+```
+
+---
+
+### File-by-File Commands
+
+#### 🐍 Backend — app.py
+```bash
+git add server/app.py
+git commit -m "Update backend app.py"
+git push origin main
+```
+
+#### 📦 Backend — requirements.txt
+```bash
+git add server/requirements.txt
+git commit -m "Update Python dependencies"
+git push origin main
+```
+
+#### 📋 Backend — Schneider Rules JSON
+```bash
+git add server/Extracted_Rules_From_Pdf.json
+git commit -m "Add new extracted rules from Rules_Guide_Used"
+git push origin main
+```
+
+#### 📁 Backend — Language Rule Files
+```bash
+git add server/c_rules.json server/cpp_rules.json server/java_rules.json server/js_rules.json server/ts_rules.json server/python_rules.json server/st_rules.json
+git commit -m "Update language-specific rule files"
+git push origin main
+```
+
+#### 🤖 Rule Extractor — Streamlit App
+```bash
+git add rule_extractor.py
+git commit -m "Update rule extractor Streamlit app"
+git push origin main
+```
+
+#### 🔧 Rule Extractor + requirements.txt (together)
+```bash
+git add rule_extractor.py server/requirements.txt
+git commit -m "Add rule extractor with dependencies"
+git push origin main
+```
+
+#### 🗂️ Rules Guide Folder (new source documents)
+```bash
+git add Rules_Guide_Used/
+git commit -m "Add new rule source documents to Rules_Guide_Used"
+git push origin main
+```
+
+#### 🔷 Frontend — All TypeScript Files
+```bash
+git add extension/src/extension.ts extension/src/llmClient.ts extension/src/chatbotView.ts
+git commit -m "Update extension TypeScript files"
+git push origin main
+```
+
+#### 📦 Frontend — package.json
+```bash
+git add extension/package.json
+git commit -m "Update extension package.json"
+git push origin main
+```
+
+#### 📄 Docs — All at Once
+```bash
+git add docs/INSTALLATION.md docs/DEPLOYMENT_GUIDE.md docs/PROJECT_COMPLETE_SUMMARY.md docs/RULES_SUMMARY.md docs/VIDEO_DEMO_SCRIPT.md
+git commit -m "Update documentation"
+git push origin main
+```
+
+#### 📄 Docs — Individual Files
+```bash
+# Installation guide only
+git add docs/INSTALLATION.md
+git commit -m "Update installation guide"
+git push origin main
+
+# Project summary only
+git add docs/PROJECT_COMPLETE_SUMMARY.md
+git commit -m "Update project summary"
+git push origin main
+
+# Rules summary only
+git add docs/RULES_SUMMARY.md
+git commit -m "Update rules summary"
+git push origin main
+
+# Video demo script only
+git add docs/VIDEO_DEMO_SCRIPT.md
+git commit -m "Update video demo script"
+git push origin main
+```
+
+#### 🏠 README
+```bash
+git add README.md
+git commit -m "Update README"
+git push origin main
+```
+
+#### ⚙️ GitHub Actions Workflow
+```bash
+git add .github/workflows/schneider-gate.yml
+git commit -m "Update CI/CD workflow"
+git push origin main
+```
+
+#### 🔒 Gitleaks Config
+```bash
+git add .gitleaks.toml
+git commit -m "Update gitleaks allowlist"
+git push origin main
+```
+
+#### 🔑 .env.example (NEVER push .env itself!)
+```bash
+git add server/.env.example
+git commit -m "Update environment variable template"
+git push origin main
+```
+
+---
+
+### 🔄 Full Project Push After Big Update
+```bash
+cd D:\Schneider_Hackathon
+
+# Stage all changes
+git add .
+
+# ✅ Safety check — .env must NOT appear in this list
+git status
+
+# Commit
+git commit -m "v8.0 - [describe your changes here]"
+
+# Push
+git push origin main
+
+# Watch GitHub Actions go green ✅
+```
+
+---
+
+### ⚠️ NEVER Push These — Should be in .gitignore
+```
+server/.env                  ← real API keys
+server/venv/                 ← Python virtual environment  
+extension/node_modules/      ← npm packages
+server/reports/              ← generated PDF reports
+__pycache__/                 ← Python cache files
+*.pyc                        ← compiled Python
+```
+
+### Safety Check Before Every Push (PowerShell)
+```powershell
+git ls-files | Select-String ".env"
+# Must return NOTHING — if it shows .env, stop and fix .gitignore first
+```
+
+---
+
+### 📋 Quick Cheat Sheet
+
+| What changed | Command |
+|---|---|
+| app.py | `git add server/app.py` |
+| requirements.txt | `git add server/requirements.txt` |
+| rule_extractor.py | `git add rule_extractor.py` |
+| Rules JSON | `git add server/Extracted_Rules_From_Pdf.json` |
+| All rule JSONs | `git add server/*_rules.json` |
+| All TS files | `git add extension/src/*.ts` |
+| All docs | `git add docs/` |
+| Everything | `git add .` |
+
+Then always finish with:
+```bash
+git commit -m "your message"
+git push origin main
+```

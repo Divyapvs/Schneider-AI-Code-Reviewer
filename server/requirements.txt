@@ -30,3 +30,11 @@ colorama==0.4.6
 # Code analysis helpers
 pylint==3.3.2
 flake8==7.1.1
+
+# Rule Extractor - PDF/PPT/Word parsing
+pdfplumber==0.11.0
+python-pptx==1.0.2
+python-docx==1.1.2
+
+# Rule Extractor - Streamlit Dashboard
+streamlit==1.32.0
