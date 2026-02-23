@@ -1841,7 +1841,7 @@
       "rule_id": "R368"
     },
     {
-      "rule": "The result of the EXPT function is not defined if the base is negative or if the base is zero and the exponent is \u2264 0.",
+      "rule": "The result of the EXPT function is not defined if the base is negative or if the base is zero and the exponent is ≤ 0.",
       "suggested_fix": "Avoid using negative base or zero base with non-positive exponent.",
       "rule_id": "R369"
     },
@@ -2179,6 +2179,94 @@
       "rule": "The TIME() function returns the time in milliseconds since the system was started.",
       "suggested_fix": "Use the TIME() function to retrieve system uptime.",
       "rule_id": "R436"
+    },
+    {
+      "rule_id": "R437",
+      "rule": "Variables should be declared with a unique name to avoid conflicts and make the code more readable.",
+      "suggested_fix": "Use meaningful and descriptive variable names, such as 'fileSize' instead of 'fs'.",
+      "source": "Programming Guide final.pdf",
+      "category": "naming",
+      "severity": "warning"
+    },
+    {
+      "rule_id": "R438",
+      "rule": "Use Hungarian notation for variable names in applications and libraries.",
+      "suggested_fix": "Use a capital letter for each word of the base name, such as 'FileSize' instead of 'fs'.",
+      "source": "Programming Guide final.pdf",
+      "category": "naming",
+      "severity": "warning"
+    },
+    {
+      "rule_id": "R439",
+      "rule": "Use meaningful and descriptive variable names for user-defined data types (DUTs) in libraries.",
+      "suggested_fix": "Use a capital letter for each word of the base name, such as 'FileSize' instead of 'fs'.",
+      "source": "Programming Guide final.pdf",
+      "category": "naming",
+      "severity": "warning"
+    },
+    {
+      "rule_id": "R440",
+      "rule": "Use meaningful and descriptive variable names for functions, function blocks, programs (POU), and actions in libraries.",
+      "suggested_fix": "Use a capital letter for each word of the base name, such as 'FileSize' instead of 'fs'.",
+      "source": "Programming Guide final.pdf",
+      "category": "naming",
+      "severity": "warning"
+    },
+    {
+      "rule_id": "R441",
+      "rule": "Use meaningful and descriptive variable names for POUs in libraries.",
+      "suggested_fix": "Use a capital letter for each word of the base name, such as 'FileSize' instead of 'fs'.",
+      "source": "Programming Guide final.pdf",
+      "category": "naming",
+      "severity": "warning"
+    },
+    {
+      "rule_id": "R442",
+      "rule": "Use meaningful and descriptive variable names for variables in GVLs or POUs of the Global node of the Applications tree.",
+      "suggested_fix": "Use a capital letter for each word of the base name, such as 'FileSize' instead of 'fs'.",
+      "source": "Programming Guide final.pdf",
+      "category": "naming",
+      "severity": "warning"
+    },
+    {
+      "rule_id": "R443",
+      "rule": "Variable names should follow the Hungarian notation as far as possible, using a meaningful, short description as the base name.",
+      "suggested_fix": "Use a capital letter for each word of the base name and small letters for the rest (e.g., FileSize).",
+      "source": "Programming Guide final.pdf",
+      "category": "naming",
+      "severity": "info"
+    },
+    {
+      "rule_id": "R446",
+      "rule": "Multiple use of an identifier is allowed globally, but a local variable will take priority over a global one.",
+      "suggested_fix": "Be aware of the scope of your variables and use unique names where necessary to avoid confusion.",
+      "source": "Programming Guide final.pdf",
+      "category": "naming",
+      "severity": "info"
+    },
+    {
+      "rule_id": "R447",
+      "rule": "Do not use more than one underscore character in a row in identifiers.",
+      "suggested_fix": "Limit the use of underscores to single instances between words in identifiers.",
+      "source": "Programming Guide final.pdf",
+      "category": "naming",
+      "severity": "warning"
+    },
+    {
+      "rule_id": "R451",
+      "rule": "Do not use more than 1 underscore character in a row in identifiers.",
+      "suggested_fix": "Limit the use of underscores in variable names to a single instance.",
+      "source": "Programming Guide final.pdf",
+      "category": "naming",
+      "severity": "warning"
+    },
+    {
+      "rule_id": "R452",
+      "rule": "Follow Hungarian notation for naming variables.",
+      "suggested_fix": "Use a meaningful base name with capital letters for each word and small letters for the rest.",
+      "source": "Programming Guide final.pdf",
+      "category": "naming",
+      "severity": "info"
     }
   ]
 }

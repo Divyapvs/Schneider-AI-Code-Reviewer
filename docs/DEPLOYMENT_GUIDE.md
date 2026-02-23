@@ -489,10 +489,10 @@ git commit -m "Update language-specific rule files"
 git push origin main
 ```
 
-#### 🤖 Rule Extractor — Streamlit App
+#### 🤖 Rule Extractor — Streamlit App (v3.3)
 ```bash
 git add rule_extractor.py
-git commit -m "Update rule extractor Streamlit app"
+git commit -m "Update rule extractor to v3.3 - raw HTTP, triple-LLM fallback, download button"
 git push origin main
 ```
 

@@ -11,7 +11,7 @@
 [![Rules](https://img.shields.io/badge/rules-558-red.svg)](#rule-database)
 [![Quality](https://img.shields.io/badge/quality%20boost-91%25-brightgreen.svg)](#performance-metrics)
 [![Team](https://img.shields.io/badge/team-5%20members-purple)]()
-[![AI Powered](https://img.shields.io/badge/AI-Gemini%20%2B%20GPT--4-ff69b4)]()
+[![AI Powered](https://img.shields.io/badge/AI-OpenAI%20%2B%20Gemini%20%2B%20Ollama-ff69b4)]()
 
 <!-- GitHub Stats (these update automatically!) -->
 ![GitHub Stars](https://img.shields.io/github/stars/ShriHarsan64K/Schneider-AI-Code-Reviewer?style=social)
@@ -94,11 +94,12 @@ An **intelligent VSCode extension** that:
   - C++ (modern C++11/14, smart pointers)
   - Structured Text (IEC 61131-3, Schneider prefixes)
 
-### 🤖 Dual AI Engines
-- **OpenAI GPT-4o** for complex reasoning
-- **Google Gemini 2.0 Flash** for speed and cost-efficiency
-- Automatic failover and load balancing
-- Configurable via environment variables
+### 🤖 Triple AI Engine (Fallback System)
+- **OpenAI GPT-4o-mini** — Primary, fastest and most reliable
+- **Google Gemini 1.5 Flash** — Secondary fallback
+- **Ollama (local)** — Tertiary offline fallback, zero cost
+- Automatic failover: OpenAI → Gemini → Ollama
+- Rule Extractor uses raw HTTP — zero SDK version conflicts
 
 ### 📊 Professional Reports
 - PDF generation with ReportLab
@@ -119,11 +120,12 @@ An **intelligent VSCode extension** that:
 - Export to JSON for further analysis
 - Visualize quality improvements
 
-### 🔀 Git Integration
-- Works with feature branch workflows
-- Commit message tracking
-- Merge-ready code
-- CI/CD compatible
+### 🌐 Rule Extractor (Streamlit Cloud)
+- Live at: https://k7bjmvlbxtd8ieetznyoyy.streamlit.app/
+- Upload PDFs/docs → AI extracts rules → saves to JSON → push to GitHub
+- Triple-LLM fallback: OpenAI → Gemini → Ollama
+
+
 
 ---
 
@@ -361,7 +363,7 @@ Schneider-AI-Code-Reviewer/
 │   └── *_rules.json         # Rule database
 ├── tests/                   # Test files
 ├── docs/                    # Documentation
-└── reports/                 # Generated PDFs
+├── rule_extractor.py    # Streamlit Rule Extractor v3.3
 ```
 
 ---
