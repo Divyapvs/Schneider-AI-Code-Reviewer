@@ -1,10 +1,21 @@
 # 🚀 Schneider Electric AI Code Reviewer
 
+<!-- Main Badges -->
 [![Version](https://img.shields.io/badge/version-8.0.0-blue.svg)](https://github.com/ShriHarsan64K/Schneider-AI-Code-Reviewer)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![Made with ❤️ in Chennai](https://img.shields.io/badge/Made%20with%20%E2%9D%A4%EF%B8%8F%20in-Chennai-blue)]()
+[![Hackathon 2026](https://img.shields.io/badge/Hackathon-2026-green)]()
+
+<!-- Metrics Badges -->
 [![Languages](https://img.shields.io/badge/languages-7-orange.svg)](#supported-languages)
 [![Rules](https://img.shields.io/badge/rules-558-red.svg)](#rule-database)
-[![Quality](https://img.shields.io/badge/quality-91%25-brightgreen.svg)](#performance-metrics)
+[![Quality](https://img.shields.io/badge/quality%20boost-91%25-brightgreen.svg)](#performance-metrics)
+[![Team](https://img.shields.io/badge/team-5%20members-purple)]()
+[![AI Powered](https://img.shields.io/badge/AI-Gemini%20%2B%20GPT--4-ff69b4)]()
+
+<!-- GitHub Stats (these update automatically!) -->
+![GitHub Stars](https://img.shields.io/github/stars/ShriHarsan64K/Schneider-AI-Code-Reviewer?style=social)
+![GitHub Forks](https://img.shields.io/github/forks/ShriHarsan64K/Schneider-AI-Code-Reviewer?style=social)
 
 > **AI-Powered Code Analysis & Auto-Fix for Industrial Automation**  
 > Analyze code against 558 Schneider Electric standards. Fix violations in one click. Support 7 programming languages.
