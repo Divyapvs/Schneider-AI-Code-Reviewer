@@ -3,6 +3,17 @@
 # CRITICAL: This file prevents sensitive data from being committed to Git
 # ============================================================================
 
+# CRITICAL - Schneider Electric Proprietary IP (DO NOT EVER COMMIT)
+# ============================================================================
+# These files contain Schneider Electric's intellectual property.
+# They are NOT part of the open-source code and must never be pushed to GitHub.
+Extracted_Rules_From_Pdf.json
+Programming_Guide_final.pdf
+*_Rules_From_Pdf.json
+Programming_Guide*.pdf
+server/*_rules.json
+server/rules*.json
+
 # CRITICAL - Environment Variables (API KEYS!)
 # ============================================================================
 .env
@@ -86,7 +97,6 @@ Thumbs.db
 # Reports (Don't commit generated PDFs)
 # ============================================================================
 reports/*.pdf
-*.pdf
 
 # Logs
 # ============================================================================

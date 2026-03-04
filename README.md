@@ -476,17 +476,24 @@ npm test
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+The **source code** of this project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
 
 ```
 MIT License
-
-Copyright (c) 2026 Schneider Electric AI Code Reviewer Team
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction...
+Copyright (c) 2026 Shri Harsan and Team (Aimlumous)
 ```
+
+---
+
+## ⚖️ Legal Notice
+
+This project was built independently during the **Schneider Electric Innovation Hackathon 2026**.
+
+- The **source code** (VSCode extension, Flask backend, AI logic) is MIT licensed — free to use, modify, and distribute.
+- The **558 coding standards** referenced in this tool are the intellectual property of **Schneider Electric**. They are **not included or distributed** in this repository.
+- The file `Extracted_Rules_From_Pdf.json` and `Programming_Guide_final.pdf` are excluded from this repo via `.gitignore` — they belong to Schneider Electric.
+- Any use of this tool against Schneider Electric's proprietary standards requires their permission.
+- This project is **not officially affiliated with or endorsed by Schneider Electric**.
 
 ---
 
