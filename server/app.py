@@ -582,8 +582,23 @@ def fix_code():
         code = data.get('code', '')
         error = data.get('error', '')
         issues = data.get('issues', [])
+        filename = data.get('filename', 'unknown.py')
         
-        file_ext = 'st' if 'VAR' in code.upper() else 'py'
+        # FIXED: Detect language from filename, not code content!
+        file_ext = filename.split('.')[-1].lower() if '.' in filename else 'py'
+        
+        # Map file extensions to standard language codes
+        ext_map = {
+            'py': 'py', 
+            'js': 'js', 'jsx': 'js',
+            'ts': 'ts', 'tsx': 'ts',
+            'java': 'java',
+            'c': 'c', 'h': 'c',
+            'cpp': 'cpp', 'cc': 'cpp', 'cxx': 'cpp', 'hpp': 'cpp',
+            'st': 'st', 'iec': 'st', 'scl': 'st',
+            'cs': 'cs'
+        }
+        file_ext = ext_map.get(file_ext, 'py')
         
         # Include relevant rules in fix prompt
         relevant_rules = ""

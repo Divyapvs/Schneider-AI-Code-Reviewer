@@ -2267,6 +2267,38 @@
       "source": "Programming Guide final.pdf",
       "category": "naming",
       "severity": "info"
+    },
+    {
+      "rule_id": "R453",
+      "rule": "Variable names must not contain spaces or special characters and should not be identical to keywords.",
+      "suggested_fix": "Ensure variable names are unique and do not use spaces or special characters.",
+      "source": "Programming Guide final.pdf",
+      "category": "naming",
+      "severity": "critical"
+    },
+    {
+      "rule_id": "R454",
+      "rule": "Do not use more than one underscore character in a row in variable names.",
+      "suggested_fix": "Revise variable names to limit underscores to a single occurrence.",
+      "source": "Programming Guide final.pdf",
+      "category": "naming",
+      "severity": "warning"
+    },
+    {
+      "rule_id": "R455",
+      "rule": "Follow Hungarian notation for naming variables in applications and libraries.",
+      "suggested_fix": "Use meaningful base names with capital letters for each word and small letters for the rest.",
+      "source": "Programming Guide final.pdf",
+      "category": "naming",
+      "severity": "info"
+    },
+    {
+      "rule_id": "R457",
+      "rule": "Variables defined in a global variable list can have the same name as variables defined in another global variable list.",
+      "suggested_fix": "Use specific prefixes to avoid confusion when accessing variables from different global variable lists.",
+      "source": "Programming Guide final.pdf",
+      "category": "naming",
+      "severity": "info"
     }
   ]
 }
