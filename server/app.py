@@ -158,6 +158,83 @@ except FileNotFoundError:
 except Exception as e:
     logger.error(f"❌ Failed to load rules: {e}")
 
+# ============================================================================
+# LOAD LANGUAGE-SPECIFIC RULES
+# ============================================================================
+
+LANGUAGE_RULES = {}
+
+def load_language_rules():
+    """Load all language-specific rule files"""
+    rule_files = {
+        'python': 'python_rules.json',
+        'javascript': 'js_rules.json',
+        'typescript': 'ts_rules.json',
+        'java': 'java_rules.json',
+        'c': 'c_rules.json',
+        'cpp': 'cpp_rules.json',
+        'st': 'st_rules.json'
+    }
+    
+    total_lang_rules = 0
+    
+    for lang, filename in rule_files.items():
+        try:
+            filepath = os.path.join(os.path.dirname(__file__), filename)
+            if os.path.exists(filepath):
+                with open(filepath, 'r', encoding='utf-8') as f:
+                    rules = json.load(f)
+                    LANGUAGE_RULES[lang] = rules
+                    total_lang_rules += len(rules)
+                    logger.info(f"✅ Loaded {len(rules)} {lang.capitalize()} language-specific rules")
+            else:
+                logger.warning(f"⚠️  Language rules file not found: {filename}")
+        except Exception as e:
+            logger.error(f"❌ Failed to load {lang} rules: {e}")
+    
+    if total_lang_rules > 0:
+        logger.info(f"📊 Total: {len(ALL_RULES) + total_lang_rules} rules loaded successfully!")
+    
+    return total_lang_rules
+
+# Load language-specific rules on startup
+lang_rules_count = load_language_rules()
+
+
+def get_language_rules_for_file(filename: str) -> List[Dict]:
+    """Get language-specific rules based on file extension"""
+    if not filename or '.' not in filename:
+        return []
+    
+    ext = filename.split('.')[-1].lower()
+    
+    # Map extensions to language keys
+    ext_map = {
+        'py': 'python',
+        'js': 'javascript',
+        'jsx': 'javascript',
+        'ts': 'typescript',
+        'tsx': 'typescript',
+        'java': 'java',
+        'c': 'c',
+        'h': 'c',
+        'cpp': 'cpp',
+        'cc': 'cpp',
+        'cxx': 'cpp',
+        'hpp': 'cpp',
+        'st': 'st',
+        'iec': 'st',
+        'scl': 'st'
+    }
+    
+    lang_key = ext_map.get(ext, None)
+    if lang_key and lang_key in LANGUAGE_RULES:
+        return LANGUAGE_RULES[lang_key]
+    
+    return []
+
+# ============================================================================
+
 REPORTS_DIR = 'reports'
 os.makedirs(REPORTS_DIR, exist_ok=True)
 
@@ -381,30 +458,33 @@ def analyze_code():
         
         file_ext = filename.split('.')[-1].lower()
         
+        # Get language-specific rules for this file
+        lang_specific_rules = get_language_rules_for_file(filename)
+        
+        # Combine Schneider rules with language-specific rules
+        all_rules_for_analysis = ALL_RULES + lang_specific_rules
+        
         # Format Schneider rules for prompt
         schneider_rules = format_rules_for_prompt(ALL_RULES, max_rules=40)
         
-        # Language specific analysis rules
-        lang_analysis_rules = {
-            'py': "PEP8 compliance, type hints, docstrings, snake_case naming, no hardcoded secrets",
-            'js': "ESLint rules, const/let usage, JSDoc comments, camelCase naming, semicolons, no hardcoded secrets",
-            'ts': "TypeScript types on all params/returns, TSDoc, camelCase, access modifiers, no var, no hardcoded secrets",
-            'java': "Javadoc on all methods/classes, generics, proper access modifiers, PascalCase classes, camelCase methods, no hardcoded secrets",
-            'c': "Function header comments, const usage, indentation, snake_case, no hardcoded secrets",
-            'cpp': "Doxygen comments, no 'using namespace std', const references, PascalCase classes, no hardcoded secrets",
-            'st': "IEC 61131-3 compliance, variable prefixes (b/i/s/r), indentation inside blocks, comments with (* *), no hardcoded strings",
-            'cs': "XML doc comments, access modifiers, PascalCase, proper namespaces, no hardcoded secrets"
-        }
-        lang_rules = lang_analysis_rules.get(file_ext, "Language best practices, comments, naming conventions, security")
+        # Format language-specific rules for prompt
+        lang_rules_text = ""
+        if lang_specific_rules:
+            lang_rules_text = "\n\nLANGUAGE-SPECIFIC RULES:\n"
+            for rule in lang_specific_rules[:20]:  # Include up to 20 language rules
+                lang_rules_text += f"[{rule.get('rule_id', 'N/A')}] {rule.get('rule', '')}\n"
+                lang_rules_text += f"  Severity: {rule.get('severity', 'warning')}\n"
+                lang_rules_text += f"  Fix: {rule.get('suggested_fix', 'N/A')}\n\n"
 
         # ENHANCED SYSTEM PROMPT with rules integration
         system_role = f"""You are a STRICT professional code reviewer for Schneider Electric.
 
 {schneider_rules}
+{lang_rules_text}
 
 CRITICAL ANALYSIS INSTRUCTIONS:
 1. This is {file_ext.upper()} code - apply {file_ext.upper()}-specific standards
-2. Check: {lang_rules}
+2. Check ALL rules above - both Schneider standards and language-specific rules
 3. Find EVERY violation - be thorough and strict
 4. Classify severity:
    - critical: Security risks (hardcoded passwords/keys), crashes, data corruption
@@ -489,7 +569,7 @@ BE EXTREMELY STRICT - this code should score LOW before fixing!"""
             'score': score,
             'grade': grade,
             'file_type': file_ext,
-            'rules_checked': len(ALL_RULES),
+            'rules_checked': len(ALL_RULES) + len(lang_specific_rules),
             'statistics': {
                 'critical': sum(1 for i in issues if i.get('severity') == 'critical'),
                 'errors': sum(1 for i in issues if i.get('severity') == 'error'),
